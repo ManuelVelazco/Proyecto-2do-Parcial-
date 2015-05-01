@@ -12,6 +12,7 @@ import java.io.FileReader;
 %public
 %class Lexer
 %standalone
+%line
         
 %{
             private List<String> tokens = new ArrayList<>();
@@ -41,3 +42,11 @@ import java.io.FileReader;
 %}
         
 %%
+"("            {tokens.add("("); System.out.println("Par_Izq");}
+")"            {tokens.add(")"); System.out.println("Par_Der");}
+"."            {tokens.add("."); System.out.println("Punto");}
+","            {tokens.add(","); System.out.println("Coma");}
+";"            {tokens.add(";"); System.out.println("Punto y Coma");}
+"_"?[A-Z]?[[a-z][_][0-9]]*     {tokens.add("Variable"); System.out.println("Variable");}
+":""-"            {tokens.add(":-"); System.out.println("Implica");}
+"'"[ -~]*"'"            {tokens.add("Cadena"); System.out.println("Cadena");}
