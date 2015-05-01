@@ -1,3 +1,10 @@
+/*
+Analizador Lexico 1.0
+
+Jose Manuel Gonzalez Velazco 271415
+Yazmin Sarahi Ramirez Fuentes 276390
+Luis Alberto Hernandez Dominguez 271507
+*/
 import java.util.ArrayList;
 import java.util.List;
 import java.io.FileReader;
@@ -34,16 +41,3 @@ import java.io.FileReader;
 %}
         
 %%
-":"     {tokens.add(":"); System.out.println("Dos Puntos");}
-";"     {tokens.add(";"); System.out.println("Punto y Coma");}
-"<"     {tokens.add("<"); System.out.println("Menor que");}
-">"     {tokens.add(">"); System.out.println("Mayor que");}
-"=="    {tokens.add("=="); System.out.println("Igual");}
-"%%"    {tokens.add("%%"); System.out.println("Porciento");}
-[0-9]   {tokens.add("Num"); System.out.println("Numero");}
-"_"    {tokens.add("ID"); System.out.println("Identificador");}
-[A-Za-z] {tokens.add("ID"); System.out.println("Identificador");}
-[A-Za-z]+[0-9] {tokens.add("ID"); System.out.println("Identificador");}
-[A-Za-z]+[A-Za-z] {tokens.add("ID"); System.out.println("Identificador");}
-"_"+[A-Za-z]+[0-9] {tokens.add("ID"); System.out.println("Identificador");}
-"_"+[A-Za-z]+[A-Za-z] {tokens.add("ID"); System.out.println("Identificador");}
