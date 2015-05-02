@@ -52,3 +52,4 @@ import java.io.FileReader;
 \"[ -~]*\"     {tokens.add("Cadena"); System.out.println("Cadena");}
 "+"?"-"?[0-9]* {tokens.add("Entero"); System.out.println("Entero");}
 "+"?"-"?[0-9]*"."[0-9]*        {tokens.add("Pto_Fijo"); System.out.println("Pto_Fijo");}
+[[0-9]*"."[0-9]*]["e"|"E"]"-"?[0-9]*       {tokens.add("Pto_Flot"); System.out.println("Pto_Flot");}
