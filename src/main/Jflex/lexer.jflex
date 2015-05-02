@@ -49,4 +49,4 @@ import java.io.FileReader;
 ";"            {tokens.add(";"); System.out.println("Punto y Coma");}
 "_"?[A-Z]?[[a-z][_][0-9]]*     {tokens.add("Variable"); System.out.println("Variable");}
 ":""-"            {tokens.add(":-"); System.out.println("Implica");}
-"'"[ -~]*"'"            {tokens.add("Cadena"); System.out.println("Cadena");}
+\"[ -~]*\"  {tokens.add("Cadena"); System.out.println("Cadena");}
