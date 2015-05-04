@@ -42,6 +42,7 @@ import java.io.FileReader;
 %}
         
 %%
+[a-z A-Z 0-9 ! º ª @ · # $ % & = ' ´ + ? < > "-" ¿ ‚ ¡ ` * + ¨ Ç : , ;]+["("][a-z A-Z 0-9 ! º ª @ · # $ % & = ' \" ´ "[" "]" + ? < > "-" ¿ ‚ ¡ ` * + ¨ Ç : , ;]+[")"] {tokens.add("Predicado"); System.out.println("Predicado");}
 "("            {tokens.add("("); System.out.println("Par_Izq");}
 ")"            {tokens.add(")"); System.out.println("Par_Der");}
 "."            {tokens.add("."); System.out.println("Punto");}
@@ -53,3 +54,7 @@ import java.io.FileReader;
 "+"?"-"?[0-9]* {tokens.add("Entero"); System.out.println("Entero");}
 "+"?"-"?[0-9]*"."[0-9]*        {tokens.add("Pto_Fijo"); System.out.println("Pto_Fijo");}
 [[0-9]*"."[0-9]*]["e"|"E"]"-"?[0-9]*       {tokens.add("Pto_Flot"); System.out.println("Pto_Flot");}
+[a-z][[A-Za-z][0-9][_]]+  {tokens.add("Atomo"); System.out.println("Atomo");}
+"'"[ -~]*"'"   {tokens.add("Atomo"); System.out.println("Atomo");}
+[!ºª@·#$%&=´+?<>"-"¿‚¡`*+¨Ç:]+    {tokens.add("Atomo"); System.out.println("Atomo");}
+["["][a-zA-Z0-9!ºª@·#$%&='´+?\"<>"-"¿‚¡()`*+¨Ç:,;]+?["]"] {tokens.add("lista"); System.out.println("lista");}
