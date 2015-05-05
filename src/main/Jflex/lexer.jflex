@@ -20,6 +20,9 @@ import java.io.FileReader;
         
 
 %{
+Token token = new Token();
+
+
             public List<String> analizar(String archivo){
     FileReader in = null;
     try{
@@ -40,21 +43,22 @@ import java.io.FileReader;
                 return tokens;
        }
 %}
+
         
 %%
-[a-z A-Z 0-9 ! º ª @ · # $ % & = ' ´ + ? < > "-" ¿ ‚ ¡ ` * + ¨ Ç : , ;]+["("][a-z A-Z 0-9 ! º ª @ · # $ % & = ' \" ´ "[" "]" + ? < > "-" ¿ ‚ ¡ ` * + ¨ Ç : , ;]+[")"] {tokens.add("Predicado"); System.out.println("Predicado");}
-"("            {tokens.add("("); System.out.println("Par_Izq");}
-")"            {tokens.add(")"); System.out.println("Par_Der");}
-"."            {tokens.add("."); System.out.println("Punto");}
-","            {tokens.add(","); System.out.println("Coma");}
-";"            {tokens.add(";"); System.out.println("Punto y Coma");}
-["_"|[A-Z]][[a-z][_][0-9]]*     {tokens.add("Variable"); System.out.println("Variable");}
-":""-"         {tokens.add(":-"); System.out.println("Implica");}
-\"[ -~]*\"     {tokens.add("Cadena"); System.out.println("Cadena");}
-"+"?"-"?[0-9]* {tokens.add("Entero"); System.out.println("Entero");}
-"+"?"-"?[0-9]*"."[0-9]*        {tokens.add("Pto_Fijo"); System.out.println("Pto_Fijo");}
-[[0-9]*"."[0-9]*]["e"|"E"]"-"?[0-9]*       {tokens.add("Pto_Flot"); System.out.println("Pto_Flot");}
-[a-z][[A-Za-z][0-9][_]]+  {tokens.add("Atomo"); System.out.println("Atomo");}
-"'"[ -~]*"'"   {tokens.add("Atomo"); System.out.println("Atomo");}
-[!ºª@·#$%&=´+?<>"-"¿‚¡`*+¨Ç:]+    {tokens.add("Atomo"); System.out.println("Atomo");}
-["["][a-zA-Z0-9!ºª@·#$%&='´+?\"<>"-"¿‚¡()`*+¨Ç:,;]+?["]"] {tokens.add("lista"); System.out.println("lista");}
+[a-z A-Z 0-9 ! º ª @ · # $ % & = ' ´ + ? < > "-" ¿ ‚ ¡ ` * + ¨ Ç : ;]+["("][a-z A-Z 0-9 ! º ª @ · # $ % & = ' \" ´ "[" "]" + ? < > "-" ¿ ‚ ¡ ` * + ¨ Ç : , ;]+[")"] {tokens.add("Predicado"); token.setLinea(yyline+1); token.setToken("Predicado"); token.setLexema(yytext()); token.imprimir();}
+"("            {tokens.add("("); token.setLinea(yyline+1); token.setToken("Par_Izq"); token.setLexema(yytext()); token.imprimir();}
+")"            {tokens.add(")"); token.setLinea(yyline+1); token.setToken("Par_Der"); token.setLexema(yytext()); token.imprimir();}
+"."            {tokens.add("."); token.setLinea(yyline+1); token.setToken("Punto"); token.setLexema(yytext()); token.imprimir();}
+","            {tokens.add(","); token.setLinea(yyline+1); token.setToken("Coma"); token.setLexema(yytext()); token.imprimir();}
+";"            {tokens.add(";"); token.setLinea(yyline+1); token.setToken("Punto y Coma"); token.setLexema(yytext()); token.imprimir();}
+["_"|[A-Z]][[a-z][_][0-9]]*     {tokens.add("Variable"); token.setLinea(yyline+1); token.setLexema(yytext()); token.setToken("Variable"); token.imprimir();}
+":""-"         {tokens.add(":-"); token.setLinea(yyline+1); token.setToken("Implica"); token.setLexema(yytext()); token.imprimir();}
+\"[ -~]*\"     {tokens.add("Cadena"); token.setLinea(yyline+1); token.setToken("Cadena"); token.setLexema(yytext()); token.imprimir();}
+"+"?"-"?[0-9]* {tokens.add("Entero"); token.setLinea(yyline+1); token.setToken("Entero"); token.setLexema(yytext()); token.imprimir();}
+"+"?"-"?[0-9]*"."[0-9]*        {tokens.add("Pto_Fijo"); token.setLinea(yyline+1); token.setToken("Pto_Fijo"); token.setLexema(yytext()); token.imprimir();}
+[[0-9]*"."[0-9]*]["e"|"E"]"-"?[0-9]*       {tokens.add("Pto_Flot"); token.setLinea(yyline+1); token.setToken("Pto_Float"); token.setLexema(yytext()); token.imprimir();}
+[a-z][[A-Za-z][0-9][_]]+  {tokens.add("Atomo"); token.setLinea(yyline+1); token.setToken("Atomo"); token.setLexema(yytext()); token.imprimir();}
+"'"[ -~]*"'"   {tokens.add("Atomo"); token.setLinea(yyline+1); token.setToken("Atomo"); token.setLexema(yytext()); token.imprimir();}
+[!ºª@·#$%&=´+?<>"-"¿‚¡`*+¨Ç:]+    {tokens.add("Atomo"); token.setLinea(yyline+1); token.setToken("Atomo"); token.setLexema(yytext()); token.imprimir();}
+["["][a-zA-Z0-9!ºª@·#$%&='´+?\"<>"-"¿‚¡()`*+¨Ç:,;]+?["]"] {tokens.add("lista"); token.setLinea(yyline+1); token.setToken("Lista"); token.setLexema(yytext()); token.imprimir();}

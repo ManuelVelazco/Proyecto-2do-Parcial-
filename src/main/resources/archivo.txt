@@ -1,5 +1,12 @@
-_oko59,Pko25,:-,"undsufu98494!@#$%^&*()_+-=]"
-"[';/.,<>?:{}",-5,+50,588,+958.45,.85,8.52(5e10;9E50;5e-20;9E-3);
-hola, 
--->(x,luis)  invierte([1,2,3],lisa), concatena("Hola","?")
-[],[hola,23,"Alfa"],[A,b,c,(x),d]
+padre, padreOmadre, raices_reales1
+'RealCompleja', '&_'
++>=, &!, -->
+Luis, X, _1, Raiz_1,
+-5, +3.1416, 4., +1803.16
+:-
+4e5, 4.8e9, 4.2E3, 4E-5
+" ", "Hola", "$&$"
+5, +5, -500, +900
+[], [hola,23,"Alfa"], [A,b,c,(x),d]
+-->(X,Luis), Invierte([1,2,3],Lisa), Concatena("Hola","?")
+( ) , ; .
